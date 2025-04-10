@@ -1,0 +1,15 @@
+{{#> FormCard title=title}}
+  <form id="login-form">
+    {{#each inputs}}
+      {{> Input }}
+    {{/each}}
+    
+    <div class="form-actions">
+      {{> Button class=primaryButton.class type=primaryButton.type text=primaryButton.text }}
+    </div>
+    
+    <div class="form-footer">
+      <a href="{{link.href}}">{{link.text}}</a>
+    </div>
+  </form>
+{{/FormCard}}

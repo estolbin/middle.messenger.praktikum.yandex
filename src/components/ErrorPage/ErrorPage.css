@@ -1,0 +1,17 @@
+.error-page {
+    max-width: 600px;
+    margin: 100px auto;
+    text-align: center;
+    padding: 20px;
+}
+
+.error-code {
+    font-size: 72px;
+    color: #ff3333;
+    margin-bottom: 10px;
+  }
+  
+.error-message {
+    font-size: 24px;
+    margin-bottom: 20px;
+}

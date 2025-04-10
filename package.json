@@ -1,7 +1,6 @@
 {
     "name": "middle.messenger.praktikum.yandex",
     "version": "0.0.1",
-    "type": "module",
     "scripts": {
         "dev": "vite",
         "build": "vite build",
@@ -11,6 +10,9 @@
         "vite": "^6.2.0"
     },
     "dependencies": {
+        "autoprefixer": "^10.4.21",
+        "postcss": "^8.5.3",
+        "postcss-preset-env": "^10.1.5",
         "vite-plugin-handlebars": "^2.0.0"
     }
 }
