@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite'
 import handlebars from 'vite-plugin-handlebars'
-import path from 'path'
+import path, { resolve } from 'path'
 import fs from 'fs'
 
 function registerComponents() {
@@ -31,8 +31,7 @@ export default defineConfig({
     },
     plugins: [
         handlebars({
-            partialDirectory: './src/components',
-            partials: registerComponents(),
+            partialDirectory: resolve(__dirname, './src/components'),
         })
     ],
     assetsInclude: ['**/*.hbs'],

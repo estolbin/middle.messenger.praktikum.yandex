@@ -21,11 +21,11 @@ export function renderLoginPage() {
   const data = {
     title: 'Вход в систему',
     inputs: [
-      { id: 'login-email', type: 'email', name: 'email', label: 'Email', placeholder: 'Введите ваш email', required: true },
+      { id: 'login-email', type: 'email', name: 'email', label: 'Логин', placeholder: 'Введите ваш email', required: true },
       { id: 'login-password', type: 'password', name: 'password', label: 'Пароль', placeholder: 'Введите ваш пароль', required: true }
     ],
     primaryButton: { text: 'Войти', type: 'submit', class: 'button-primary' },
-    link: { text: 'Забыли пароль?', href: '#forgot' }
+    link: { text: 'Зарегистрироваться', href: '/register' }
   };
   
   const html = loginTemplate(data);
