@@ -82,3 +82,64 @@ body {
 .button-danger:hover {
   background-color: #cc0000;
 }
+
+.chat-page {
+  display: flex;
+  height: 100vh;
+}
+
+.chat-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-messages {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-input {
+  display: flex;
+  padding: 10px;
+  border-top: 1px solid #EAEAEA;
+  align-items: center;
+}
+
+.chat-input__field {
+  flex: 1;
+  border: none;
+  padding: 10px;
+  outline: none;
+}
+
+.chat-page {
+  display: flex;
+  height: 95vh;
+  background: #F8F8F8;
+}
+
+.chat-list-panel {
+  width: 310px;
+  background: white;
+  border-right: 1px solid #EAEAEA;
+}
+
+.chat-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.messages-container {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  background: #F8F8F8;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}

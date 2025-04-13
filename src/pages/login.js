@@ -29,7 +29,6 @@ export function renderLoginPage() {
   };
   
   const html = loginTemplate(data);
-  console.log(html);
   app.innerHTML = html;
   
 }

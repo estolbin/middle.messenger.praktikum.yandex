@@ -1,16 +1,9 @@
 import Handlebars from 'handlebars';
 import profileTemplateRaw from '../templates/profile.hbs?raw';
-import InputTemplate from '../components/Input/Input.hbs?raw';
-import ButtonTemplate from '../components/Button/Button.hbs?raw';
-import AvatarTemplate from '../components/Avatar/Avatar.hbs?raw';
 
 import '../components/Button/Button.css';
 import '../components/Input/Input.css';
 import '../components/Avatar/Avatar.css';
-
-Handlebars.registerPartial('Input', Handlebars.compile(InputTemplate));
-Handlebars.registerPartial('Button', Handlebars.compile(ButtonTemplate));
-Handlebars.registerPartial('Avatar', Handlebars.compile(AvatarTemplate));
 
 const profileTemplate = Handlebars.compile(profileTemplateRaw);
 
@@ -20,7 +13,7 @@ export function renderProfilePage() {
   
   const data = {
     avatar: {
-        scr: 'https://via.placeholder.com/130',
+        src: 'https://avatar.iran.liara.run/public/boy',
         alt: 'Аватар пользователя',
         editable: true
     },

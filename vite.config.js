@@ -1,21 +1,8 @@
 import { defineConfig } from 'vite'
 import handlebars from 'vite-plugin-handlebars'
-import path, { resolve } from 'path'
-import fs from 'fs'
+import { resolve } from 'path'
 
-function registerComponents() {
-    const componentsDir = path.resolve(__dirname, './src/components');
-    const partials = {};
-    
-    fs.readdirSync(componentsDir).forEach(folder => {
-      const hbsPath = path.join(componentsDir, folder, `${folder}.hbs`);
-      if (fs.existsSync(hbsPath)) {
-        partials[folder] = fs.readFileSync(hbsPath, 'utf-8');
-      }
-    });
-    
-    return partials;
-  }
+
 
 export default defineConfig({
     root: "./src",
