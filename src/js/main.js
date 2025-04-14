@@ -37,4 +37,3 @@ switch (path) {
         render404Page();
         break;
 }
-
