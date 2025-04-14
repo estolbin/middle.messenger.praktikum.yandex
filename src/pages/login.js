@@ -16,12 +16,12 @@ const loginTemplate = Handlebars.compile(loginTemplateRaw);
 
 
 export function renderLoginPage() {
-  const app = document.getElementById('app');
+  const main = document.getElementById('main');
   
   const data = {
     title: 'Вход в систему',
     inputs: [
-      { id: 'login-email', type: 'email', name: 'email', label: 'Логин', placeholder: 'Введите ваш email', required: true },
+      { id: 'login-email', type: 'email', name: 'login', label: 'Логин', placeholder: 'Введите ваш email', required: true },
       { id: 'login-password', type: 'password', name: 'password', label: 'Пароль', placeholder: 'Введите ваш пароль', required: true }
     ],
     primaryButton: { text: 'Войти', type: 'submit', class: 'button-primary' },
@@ -29,6 +29,6 @@ export function renderLoginPage() {
   };
   
   const html = loginTemplate(data);
-  app.innerHTML = html;
+  main.innerHTML = html;
   
 }

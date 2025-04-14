@@ -13,9 +13,6 @@ export default defineConfig({
         outDir: "../dist",
         emptyOutDir: true
     },
-    server: {
-        port: 3000
-    },
     plugins: [
         handlebars({
             partialDirectory: resolve(__dirname, './src/components'),

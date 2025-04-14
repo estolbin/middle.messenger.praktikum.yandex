@@ -9,7 +9,7 @@ const profileTemplate = Handlebars.compile(profileTemplateRaw);
 
 
 export function renderProfilePage() {
-  const app = document.getElementById('app');
+  const main = document.getElementById('main');
   
   const data = {
     avatar: {
@@ -21,7 +21,7 @@ export function renderProfilePage() {
         { id: 'profile-email', type: 'email', name: 'email', label: 'Почта', value: 'example@mail.ru', readonly: true },
         { id: 'profile-login', type: 'text', name: 'login', label: 'Логин', value: 'user123', readonly: true },
         { id: 'profile-firstname', type: 'text', name: 'first_name', label: 'Имя', value: 'Иван' },
-        { id: 'profile-lastname', type: 'text', name: 'last_name', label: 'Фамилия', value: 'Иванов' },
+        { id: 'profile-lastname', type: 'text', name: 'second_name', label: 'Фамилия', value: 'Иванов' },
         { id: 'profile-displayname', type: 'text', name: 'display_name', label: 'Имя в чате', value: 'Иван' },
         { id: 'profile-phone', type: 'tel', name: 'phone', label: 'Телефон', value: '+7 (123) 456-78-90' }
       ],
@@ -34,6 +34,6 @@ export function renderProfilePage() {
   };
   
   const html = profileTemplate(data);
-  app.innerHTML = html;
+  main.innerHTML = html;
   
 }
