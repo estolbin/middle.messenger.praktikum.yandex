@@ -9,7 +9,7 @@ const registerTemplate = Handlebars.compile(registerTemplateRaw);
 
 
 export function renderRegisterPage() {
-  const main = document.getElementById('main');
+  const app = document.getElementById('app');
   
   const data = {
     title: 'Регистрация',
@@ -27,6 +27,6 @@ export function renderRegisterPage() {
   };
   
   const html = registerTemplate(data);
-  main.innerHTML = html;
+  app.innerHTML = html;
   
 }

@@ -10,7 +10,7 @@ import '../components/Button/Button.css';
 import '../components/MessageInput/MessageInput.css'
 
 export function renderChatPage() {
-  const main = document.getElementById('main');
+  const app = document.getElementById('app');
   
   const data = {
     chats: [
@@ -59,7 +59,7 @@ export function renderChatPage() {
 
   // Компилируем шаблон с данными
   const template = Handlebars.compile(chatTemplate);
-  main.innerHTML = template(data);
+  app.innerHTML = template(data);
   
   // Добавляем обработчики событий
   document.querySelectorAll('.chat-item').forEach(item => {

@@ -9,7 +9,7 @@ const profileTemplate = Handlebars.compile(profileTemplateRaw);
 
 
 export function renderProfilePage() {
-  const main = document.getElementById('main');
+  const app = document.getElementById('app');
   
   const data = {
     avatar: {
@@ -34,6 +34,6 @@ export function renderProfilePage() {
   };
   
   const html = profileTemplate(data);
-  main.innerHTML = html;
+  app.innerHTML = html;
   
 }

@@ -5,8 +5,8 @@ import '../components/ErrorPage/ErrorPage.css';
 const template = Handlebars.compile(ErrorPageTemplate);
 
 export function render500Page() {
-  const main = document.getElementById('main');
-  main.innerHTML = template({
+  const app = document.getElementById('app');
+  app.innerHTML = template({
     errorCode: '500',
     errorMessage: 'Ошибка сервера',
   });

@@ -16,7 +16,7 @@ const loginTemplate = Handlebars.compile(loginTemplateRaw);
 
 
 export function renderLoginPage() {
-  const main = document.getElementById('main');
+  const app = document.getElementById('app');
   
   const data = {
     title: 'Вход в систему',
@@ -29,6 +29,6 @@ export function renderLoginPage() {
   };
   
   const html = loginTemplate(data);
-  main.innerHTML = html;
+  app.innerHTML = html;
   
 }
