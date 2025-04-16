@@ -1,0 +1,47 @@
+.message-input {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  background: white;
+  border-top: 1px solid #EAEAEA;
+  position: relative;
+}
+
+.message-input__field {
+  flex: 1;
+  border: none;
+  background: #EFEFEF;
+  border-radius: 30px;
+  padding: 10px 20px;
+  font-size: 12px;
+  margin: 0 10px;
+  outline: none;
+  min-height: 34px;
+}
+  
+.message-input__attach-button,
+.message-input__send-button {
+  background: none;
+  border: none;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: background-color 0.3s;
+}
+
+.message-input__send-button:hover {
+  background-color: #F5F5F5;
+}  
+
+.message-input__attach-button:hover {
+  background-color: #F5F5F5;
+}
+
+.message-input__send-button svg {
+  width: 28px;
+  height: 28px;
+}

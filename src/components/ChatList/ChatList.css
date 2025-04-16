@@ -1,0 +1,13 @@
+.chat-list {
+  width: 310px;
+  border-right: 1px solid #EAEAEA;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-list__items {
+  flex: 1;
+  overflow-y: auto;
+}
+ 

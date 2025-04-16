@@ -1,0 +1,13 @@
+<div class="message {{#if isMine}}message--mine{{/if}}">
+  <div class="message__content">
+    {{content}}
+    <div class="message__meta">
+      <time class="message__time">{{time}}</time>
+      {{#if isRead}}
+        <span class="message__status message__status--read">✓✓</span>
+      {{else}}
+        <span class="message__status">✓</span>
+      {{/if}}
+    </div>
+  </div>
+</div>

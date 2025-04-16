@@ -1,0 +1,15 @@
+<div class="chat-item {{#if active}}chat-item--active{{/if}}">
+  {{> Avatar src=avatarSrc size="medium"}}
+  <div class="chat-item__content">
+    <div class="chat-item__header">
+      <h3 class="chat-item__name">{{name}}</h3>
+      <time class="chat-item__time">{{lastMessageTime}}</time>
+    </div>
+    <div class="chat-item__preview">
+      <p class="chat-item__text">{{lastMessageText}}</p>
+      {{#if unreadCount}}
+        <span class="chat-item__badge">{{unreadCount}}</span>
+      {{/if}}
+    </div>
+  </div>
+</div>

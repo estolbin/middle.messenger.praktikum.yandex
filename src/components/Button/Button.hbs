@@ -1,0 +1,10 @@
+<button 
+  class="button {{class}} {{#if variant}}button--{{variant}}{{/if}}" 
+  type="{{type}}" 
+  {{#if onClick}}data-onclick="{{onClick}}"{{/if}}
+>
+  {{#if icon}}
+    <span class="button__icon">{{icon}}</span>
+  {{/if}}
+  {{text}}
+</button>
