@@ -7,11 +7,11 @@ import '../components/ChatItem/ChatItem.css';
 import '../components/Search/Search.css';
 import '../components/Message/Message.css';
 import '../components/Button/Button.css';
-import '../components/MessageInput/MessageInput.css'
+import '../components/MessageInput/MessageInput.css';
 
 export function renderChatPage() {
   const app = document.getElementById('app');
-  
+
   const data = {
     chats: [
       {
@@ -21,16 +21,17 @@ export function renderChatPage() {
         lastMessageText: 'Изображение',
         lastMessageTime: '10:49',
         unreadCount: 2,
-        active: true
+        active: true,
       },
       {
         id: 2,
-        avatarSrc: 'https://avatar.iran.liara.run/username?username=Киноклуб',
+        avatarSrc:
+                    'https://avatar.iran.liara.run/username?username=Киноклуб',
         name: 'Киноклуб',
         lastMessageText: 'Стикер',
         lastMessageTime: '12:00',
         unreadCount: 0,
-        active: false
+        active: false,
       },
       // Добавьте больше тестовых чатов
     ],
@@ -40,31 +41,33 @@ export function renderChatPage() {
         content: 'Привет! Как дела?',
         time: '11:56',
         isMine: false,
-        isRead: true
+        isRead: true,
       },
       {
         id: 2,
         content: 'Отправляю тебе изображение',
         time: '12:01',
         isMine: true,
-        isRead: true
+        isRead: true,
       },
       // Добавьте больше тестовых сообщений
     ],
     currentUser: {
       avatarSrc: 'https://via.placeholder.com/34',
-      name: 'Вы'
-    }
+      name: 'Вы',
+    },
   };
 
   // Компилируем шаблон с данными
   const template = Handlebars.compile(chatTemplate);
-  app.innerHTML = template(data);
-  
+  if (app) {
+    app.innerHTML = template(data);
+  }
+
   // Добавляем обработчики событий
-  document.querySelectorAll('.chat-item').forEach(item => {
+  document.querySelectorAll('.chat-item').forEach((item) => {
     item.addEventListener('click', () => {
-      console.log('Чат выбран:', item.dataset.chatId);
+      console.log('Чат выбран:', item);
       // Здесь будет логика загрузки сообщений чата
     });
   });
