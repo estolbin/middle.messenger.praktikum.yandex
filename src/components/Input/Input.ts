@@ -13,12 +13,11 @@ export default class Input extends Block {
       placeholder: props.placeholder || '',
       readonly: props.readonly || false,
       error: props.error || '',
-      id: props.id || ''
+      id: props.id || '',
     });
   }
 
   protected render(): string {
-
     return `
             <span class="input-field__label">{{ label }}</span>
             <input

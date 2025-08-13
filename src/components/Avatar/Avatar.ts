@@ -6,7 +6,9 @@ export default class Avatar extends Block {
   constructor(props: Props) {
     super('div', {
       ...props,
+      className: 'avatar medium',
       editable: props.editable || false,
+      alt: props.alt || 'avatar',
     });
   }
 

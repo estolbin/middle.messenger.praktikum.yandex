@@ -8,11 +8,11 @@ export default class MessageInput extends Block {
   constructor(props: Props) {
     super('div', {
       ...props,
-      class: 'message-input',
+      className: 'message-input',
       AttachButton: new Button({
         type: 'button',
-        class: 'message-input__attach-button',
-        children: `
+        className: 'message-input__attach-button',
+        svgIcon: `
                     <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M6.18662 12.5L13.7628 4.92389L14.7056 5.8667L7.12943 13.4428L6.18662 12.5Z" fill="#999"/>
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M8.70067 15.0141L16.2768 7.43793L17.2196 8.38074L9.64348 15.9569L8.70067 15.0141Z" fill="#999"/>
@@ -24,17 +24,17 @@ export default class MessageInput extends Block {
       }),
       Input: new Input({
         type: 'text',
-        class: 'message-input__field',
+        className: 'message-input__field',
         placeholder: 'Сообщение',
         'aria-label': 'Введите сообщение',
       }),
       SendButton: new Button({
         type: 'submit',
-        class: 'message-input__send-button',
-        children: `
+        className: 'message-input__send-button',
+        svgIcon: `
                     <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M4.03137 3.34914L25.3805 12.532C26.7095 13.0685 26.7095 14.9315 25.3805 15.468L4.03138 24.6509C2.76683 25.1616 1.75 23.9927 1.75 22.6829V5.31709C1.75 4.00731 2.76683 2.83838 4.03137 3.34914Z" fill="#3369F3"/>
-                    <path d="M1.75 22.6829L1.75 5.31709C1.75 4.00731 2.76683 2.83838 4.03138 3.34914L25.3805 12.532C26.7095 13.0685 26.7095 14.9315 25.3805 15.468L4.03137 24.6509C2.76683 25.1616 1.75 23.9927 1.75 22.6829Z" stroke="white" stroke-width="2"/>
+                        <path d="M4.03137 3.34914L25.3805 12.532C26.7095 13.0685 26.7095 14.9315 25.3805 15.468L4.03138 24.6509C2.76683 25.1616 1.75 23.9927 1.75 22.6829V5.31709C1.75 4.00731 2.76683 2.83838 4.03137 3.34914Z" fill="#3369F3"/>
+                        <path d="M1.75 22.6829L1.75 5.31709C1.75 4.00731 2.76683 2.83838 4.03138 3.34914L25.3805 12.532C26.7095 13.0685 26.7095 14.9315 25.3805 15.468L4.03137 24.6509C2.76683 25.1616 1.75 23.9927 1.75 22.6829Z" stroke="white" stroke-width="2"/>
                     </svg>
                 `,
       }),
@@ -43,9 +43,9 @@ export default class MessageInput extends Block {
 
   protected render(): string {
     return `
-            {{ AttachButton }}
-            {{ Input }}
-            {{ SendButton }}
+            {{{ AttachButton }}}
+            {{{ Input }}}
+            {{{ SendButton }}}
         `;
   }
 }

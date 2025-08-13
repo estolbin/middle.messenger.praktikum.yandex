@@ -1,0 +1,14 @@
+export default [
+  {
+    id: 1, avatarSrc: 'https://avatar.iran.liara.run/public/boy', name: 'Alice', lastMessageText: 'Hello! How are you?', lastMessageTime: '10:30 AM', unreadCount: 3, isActive: true,
+  },
+  {
+    id: 2, avatarSrc: 'https://avatar.iran.liara.run/public/boy', name: 'Bob', lastMessageText: 'I\'m good, thank you!', lastMessageTime: '10:35 AM', unreadCount: 0, isActive: false,
+  },
+  {
+    id: 3, avatarSrc: 'https://avatar.iran.liara.run/public/boy', name: 'Charlie', lastMessageText: 'Hey! What\'s up?', lastMessageTime: '10:40 AM', unreadCount: 0, isActive: false,
+  },
+  {
+    id: 4, avatarSrc: 'https://avatar.iran.liara.run/public/boy', name: 'David', lastMessageText: 'I\'m doing well, thanks!', lastMessageTime: '10:45 AM', unreadCount: 0, isActive: false,
+  },
+];

@@ -2,6 +2,7 @@ import type { Props } from '../../utils/types';
 import Button from '../Button/Button';
 import Input from '../Input/Input';
 import Block from '../../utils/block';
+import './Search.css';
 
 export default class Search extends Block {
   constructor(props: Props) {
@@ -24,10 +25,10 @@ export default class Search extends Block {
   protected render(): string {
     return `
             {{{ Input }}}
-            {{{ Button}}}
+            {{{ Button }}}
             {{#if error}}
-            <span class="input-field__error">{{error}}</span>
-            {{/if}}*/             
+                <span class="input-field__error">{{error}}</span>
+            {{/if}}             
         `;
   }
 }

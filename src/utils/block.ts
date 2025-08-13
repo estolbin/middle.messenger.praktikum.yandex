@@ -54,31 +54,30 @@ export default class Block {
     this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
   }
 
-private _getChildrenAndProps(childrenAndProps: Props): { props: Props; children: Record<string, Block | Block[]> } {
+  private _getChildrenAndProps(childrenAndProps: Props): { props: Props; children: Record<string, Block | Block[]> } {
     const children: Record<string, Block | Block[]> = {};
     const props: Props = {};
 
     Object.entries(childrenAndProps).forEach(([key, value]) => {
-        if (Array.isArray(value)) {
-            // Разделяем массив на Block и остальные данные
-            const blockChildren = value.filter((item) => item instanceof Block);
-            const otherProps = value.filter((item) => !(item instanceof Block));
+      if (Array.isArray(value)) {
+        const blockChildren = value.filter((item) => item instanceof Block);
+        const otherProps = value.filter((item) => !(item instanceof Block));
 
-            if (blockChildren.length > 0) {
-                children[key] = blockChildren;
-            }
-            if (otherProps.length > 0) {
-                props[key] = otherProps;
-            }
-        } else if (value instanceof Block) {
-            children[key] = value;
-        } else {
-            props[key] = value;
+        if (blockChildren.length > 0) {
+          children[key] = blockChildren;
         }
+        if (otherProps.length > 0) {
+          props[key] = otherProps;
+        }
+      } else if (value instanceof Block) {
+        children[key] = value;
+      } else {
+        props[key] = value;
+      }
     });
 
     return { props, children };
-}
+  }
 
   private _registerEvents(eventBus: EventBus): void {
     eventBus.on(Block.EVENTS.INIT, this._init.bind(this));
@@ -141,16 +140,17 @@ private _getChildrenAndProps(childrenAndProps: Props): { props: Props; children:
     }
 
     this._addEvents();
+    this._addAttrs();
   }
 
   private _removeEvents(): void {
     const { events = {} } = this.props;
 
     if (events && this._element) {
-        Object.entries(events).forEach(([eventName, handler]) => {
-            //const eventType = eventName.toLowerCase().replace('on', '');
-            this._element?.removeEventListener(eventName, handler as (event: Event) => void);
-        });
+      Object.entries(events).forEach(([eventName, handler]) => {
+        // const eventType = eventName.toLowerCase().replace('on', '');
+        this._element?.removeEventListener(eventName, handler as (event: Event) => void);
+      });
     }
   }
 
@@ -165,12 +165,9 @@ private _getChildrenAndProps(childrenAndProps: Props): { props: Props; children:
       }
     });
 
-    //const fragment = document.createElement('template');
     const fragment = this._createDocumentElement('template') as HTMLTemplateElement;
     const template = Handlebars.compile(this.render());
     fragment.innerHTML = template(propsAndStubs);
-
-    //const element = this.getContent();
 
     Object.values(this.children).forEach((child) => {
       if (Array.isArray(child)) {
@@ -184,8 +181,8 @@ private _getChildrenAndProps(childrenAndProps: Props): { props: Props; children:
       } else {
         const stub = fragment.content.querySelector(`[data-id="${child._id}"]`);
         if (stub) {
-            const element = child.getContent();
-            element && stub.replaceWith(element);
+          const element = child.getContent();
+          element && stub.replaceWith(element);
         }
       }
     });
@@ -197,10 +194,19 @@ private _getChildrenAndProps(childrenAndProps: Props): { props: Props; children:
     const { events } = this.props;
 
     if (events && this._element) {
-        Object.entries(events).forEach(([eventName, handler]) => {
-            //const eventType = eventName.toLowerCase().replace('on', '');
-            this._element?.addEventListener(eventName, handler as (event: Event) => void);
-        });
+      Object.entries(events).forEach(([eventName, handler]) => {
+        this._element?.addEventListener(eventName, handler as (event: Event) => void);
+      });
+    }
+  }
+
+  private _addAttrs(): void {
+    const { attrs } = this.props;
+
+    if (attrs && this._element) {
+      Object.entries(attrs).forEach(([attrName, attrValue]) => {
+        this._element?.setAttribute(attrName, attrValue as string);
+      });
     }
   }
 
@@ -237,7 +243,12 @@ private _getChildrenAndProps(childrenAndProps: Props): { props: Props; children:
   }
 
   private _createDocumentElement(tagName: string): HTMLElement {
-    return document.createElement(tagName);
+    const element = document.createElement(tagName);
+
+    if (this.props.settings?.withInternalID) {
+      element.setAttribute('data-id', this._id);
+    }
+    return element;
   }
 
   public show(): void {

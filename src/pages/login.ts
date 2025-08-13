@@ -8,7 +8,7 @@ export default class LoginPage extends Block {
     super('div', {
       LoginFormCard: new FormCard({
         title: 'Вход в систему',
-        inputs: [
+        items: [
           new Input({
             id: 'login-email',
             type: 'email',
@@ -32,10 +32,9 @@ export default class LoginPage extends Block {
           class: 'button-primary',
           events: {
             click: (event: Event) => {
-                event.preventDefault();
-                console.log('it worked')
-            }
-          }
+              event.preventDefault();
+            },
+          },
         }),
         link: {
           text: 'Зарегистрироваться',

@@ -1,7 +1,7 @@
 export type Props = {
-    [key: string]: any; 
+    [key: string]: any;
     events?: {
-        [key: string]: (event: Event) => void; 
+        [key: string]: (event: Event) => void;
     };
 };
 export type Meta = {

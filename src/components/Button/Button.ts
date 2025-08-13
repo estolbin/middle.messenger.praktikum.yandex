@@ -9,16 +9,20 @@ export default class Button extends Block {
       type: props.type || 'submit',
       className: props.className || 'button',
       icon: props.icon || '',
-      events: props.events || {}
+      svgIcon: props.svgIcon || '',
+      events: props.events || {},
     });
   }
 
   protected render(): string {
-    return ` {{#if icon}}
+    return `
+            {{#if svgIcon}}
+            {{{this.svgIcon}}}
+            {{/if}}
+            {{#if icon}}
             <span class="button__icon">{{icon}}</span>
             {{/if}}
             {{text}}
             `;
   }
 }
-
