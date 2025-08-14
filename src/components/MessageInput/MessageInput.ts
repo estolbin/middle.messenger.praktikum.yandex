@@ -1,11 +1,30 @@
 import Block from '../../utils/block';
 import type { Props } from '../../utils/types';
+import { createValidator, isValidMessage } from '../../utils/validator';
 import Button from '../Button/Button';
 import Input from '../Input/Input';
 import './MessageInput.css';
 
 export default class MessageInput extends Block {
   constructor(props: Props) {
+    const messageInput = new Input({
+      type: 'text',
+      className: 'message-input__field',
+      placeholder: 'Сообщение',
+      'aria-label': 'Введите сообщение',
+      events: {
+        'input:blur': (event: Event) => {
+          if (event.target instanceof HTMLInputElement) {
+            const { value } = event.target;
+            const validate = createValidator(event, messageInput);
+
+            validate(() => !isValidMessage(value), 'Неправильный формат сообщения');
+          }
+        },
+      },
+
+    });
+
     super('div', {
       ...props,
       className: 'message-input',
@@ -22,12 +41,7 @@ export default class MessageInput extends Block {
                     </svg>
                 `,
       }),
-      Input: new Input({
-        type: 'text',
-        className: 'message-input__field',
-        placeholder: 'Сообщение',
-        'aria-label': 'Введите сообщение',
-      }),
+      Input: messageInput,
       SendButton: new Button({
         type: 'submit',
         className: 'message-input__send-button',

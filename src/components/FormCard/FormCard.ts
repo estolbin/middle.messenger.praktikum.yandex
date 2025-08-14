@@ -14,7 +14,7 @@ export default class FormCard extends Block {
     return `
             <div class="form-card">
                 <h2 class="form-card__title">{{title}}</h2>
-                <form id="{{form_id}}">
+                <form id="{{form_id}}" ref="{{form_id}}">
                     {{#each items}}
                         {{{this}}}
                     {{/each}}

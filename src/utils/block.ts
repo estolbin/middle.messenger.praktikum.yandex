@@ -11,7 +11,9 @@ export default class Block {
     FLOW_RENDER: 'flow:render',
   } as const;
 
-  private _element: HTMLElement | null = null;
+  protected _element: HTMLElement | null = null;
+
+  private _refs: Record<string, HTMLElement> = {};
 
   private _meta: Meta = {
     tagName: 'div',
@@ -122,8 +124,15 @@ export default class Block {
       return;
     }
 
+    const oldProps = { ...this.props };
     Object.assign(this.props, nextProps);
+
+    this.componentDidUpdate(oldProps, this.props);
   };
+
+  public getProps(): Props {
+    return this.props;
+  }
 
   get element() {
     return this._element;
@@ -140,6 +149,7 @@ export default class Block {
     }
 
     this._addEvents();
+    this._addEventsToRefs();
     this._addAttrs();
   }
 
@@ -187,6 +197,16 @@ export default class Block {
       }
     });
 
+    Object.values(this._refs).forEach((ref) => ref.remove());
+    this._refs = {};
+
+    Array.from(fragment.content.querySelectorAll('[ref]')).forEach((el) => {
+      const refName = el.getAttribute('ref');
+      if (refName) {
+        this._refs[refName] = el as HTMLElement;
+      }
+    });
+
     return fragment.content;
   }
 
@@ -195,7 +215,23 @@ export default class Block {
 
     if (events && this._element) {
       Object.entries(events).forEach(([eventName, handler]) => {
-        this._element?.addEventListener(eventName, handler as (event: Event) => void);
+        const eventType = eventName.toLowerCase();
+        this._element?.addEventListener(eventType, handler as (event: Event) => void);
+      });
+    }
+  }
+
+  private _addEventsToRefs(): void {
+    const { events } = this.props;
+
+    if (events && this._refs) {
+      Object.entries(events).forEach(([eventName, handler]) => {
+        const refName = eventName.split(':')[0];
+        const eventType = eventName.split(':')[1];
+
+        if (this._refs[refName] instanceof HTMLElement) {
+          this._refs[refName].addEventListener(eventType, handler as (event: Event) => void);
+        }
       });
     }
   }
