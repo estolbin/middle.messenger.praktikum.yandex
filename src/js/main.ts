@@ -1,36 +1,34 @@
 import '../css/main.css';
 import ChatPage from '../pages/chat';
-
 import Page404 from '../pages/error/404';
 import Page500 from '../pages/error/500';
 import LoginPage from '../pages/login';
 import ProfilePage from '../pages/profile';
 import RegisterPage from '../pages/register/register';
-/*
-import ProfilePage from '../pages/ProfilePage';
-import ChatPage from '../pages/ChatPage'; */
+import Block from '../utils/block';
+import { Routes } from './Routes';
 
 const path = window.location.pathname;
 
-let page: any;
+let page: Block;
 switch (path) {
-  case '/login':
+  case Routes.LOGIN:
   case '/':
     page = new LoginPage();
     break;
-  case '/404':
+  case Routes.ERROR_404:
     page = new Page404();
     break;
-  case '/500':
+  case Routes.ERROR_500:
     page = new Page500();
     break;
-  case '/register':
+  case Routes.REGISTER:
     page = new RegisterPage();
     break;
-  case '/chat':
+  case Routes.CHAT:
     page = new ChatPage();
     break;
-  case '/profile':
+  case Routes.PROFILE:
     page = new ProfilePage();
     break;
   default:

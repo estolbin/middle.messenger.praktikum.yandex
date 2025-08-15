@@ -6,11 +6,14 @@ export default class Button extends Block {
   constructor(props: Props) {
     super('button', {
       ...props,
-      type: props.type || 'submit',
       className: props.className || 'button',
       icon: props.icon || '',
       svgIcon: props.svgIcon || '',
       events: props.events || {},
+      attrs: {
+        ...props.attrs,
+        type: props.type || 'submit',
+      },
     });
   }
 

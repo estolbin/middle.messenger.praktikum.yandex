@@ -17,9 +17,26 @@ type OptionsWithoutMethod = Omit<Options, 'method'>;
 // Этот тип эквивалентен следующему:
 // type OptionsWithoutMethod = { data?: any };
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 class HTTPTransport {
   get(url: string, options: OptionsWithoutMethod = {}): Promise<XMLHttpRequest> {
     return this.request(url, { ...options, method: METHOD.GET });
+  }
+
+  post(url: string, options: OptionsWithoutMethod = {}): Promise<XMLHttpRequest> {
+    return this.request(url, { ...options, method: METHOD.POST });
+  }
+
+  put(url: string, options: OptionsWithoutMethod = {}): Promise<XMLHttpRequest> {
+    return this.request(url, { ...options, method: METHOD.PUT });
+  }
+
+  patch(url: string, options: OptionsWithoutMethod = {}): Promise<XMLHttpRequest> {
+    return this.request(url, { ...options, method: METHOD.PATCH });
+  }
+
+  delete(url: string, options: OptionsWithoutMethod = {}): Promise<XMLHttpRequest> {
+    return this.request(url, { ...options, method: METHOD.DELETE });
   }
 
   request(url: string, options: Options = { method: METHOD.GET }): Promise<XMLHttpRequest> {
@@ -29,6 +46,7 @@ class HTTPTransport {
       const xhr = new XMLHttpRequest();
       xhr.open(method, url);
 
+      // eslint-disable-next-line func-names
       xhr.onload = function () {
         resolve(xhr);
       };

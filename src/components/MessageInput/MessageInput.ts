@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import Block from '../../utils/block';
 import type { Props } from '../../utils/types';
 import { createValidator, isValidMessage } from '../../utils/validator';
@@ -58,7 +59,9 @@ export default class MessageInput extends Block {
   protected render(): string {
     return `
             {{{ AttachButton }}}
+             <form id="message-form" class="chat-message__input">
             {{{ Input }}}
+             </form>
             {{{ SendButton }}}
         `;
   }

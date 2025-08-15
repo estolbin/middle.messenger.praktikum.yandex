@@ -5,6 +5,7 @@ import Button from '../components/Button/Button';
 import {
   createValidator, hasDigit, hasUppercaseLetter, isPasswordLengthValid, isValidEmail, validateForm,
 } from '../utils/validator';
+import { Routes } from '../js/Routes';
 
 export default class LoginPage extends Block {
   constructor() {
@@ -61,7 +62,7 @@ export default class LoginPage extends Block {
         }),
         link: {
           text: 'Зарегистрироваться',
-          href: '/register',
+          href: Routes.REGISTER,
         },
         events: {
           'login-form:submit': (event: Event) => {
@@ -79,8 +80,10 @@ export default class LoginPage extends Block {
               const isFormValid = validateForm(fields);
 
               if (isFormValid) {
+                // eslint-disable-next-line no-console
                 console.log('login', login, 'password', password);
               } else {
+                // eslint-disable-next-line no-console
                 console.log('Ошибка валидации формы');
               }
             }

@@ -115,6 +115,7 @@ export default class Block {
     this._render();
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   protected componentDidUpdate(_oldProps: Props, _newProps: Props): boolean {
     return true;
   }
@@ -151,6 +152,7 @@ export default class Block {
     this._addEvents();
     this._addEventsToRefs();
     this._addAttrs();
+    this.componentDidMount();
   }
 
   private _removeEvents(): void {

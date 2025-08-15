@@ -37,7 +37,6 @@ export default class ChatList extends Block {
           allChatItems?.forEach((item) => item.classList.remove('chat-item--active'));
 
           chatItem.classList.add('chat-item--active');
-          console.log(chatItem);
         },
       },
     }));

@@ -4,7 +4,7 @@ export default {
     plugins: [
         "stylelint-scss"
     ],
-    ignoreFiles: ["dist", "**/*.min.css", "node_modules"],
+    ignoreFiles: ["dist", "**/*.min.css", "node_modules", "**/*.css"],
     rules: {
         "at-rule-no-unknown": null,
         "scss/at-rule-no-unknown": true,

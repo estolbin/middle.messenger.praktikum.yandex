@@ -1,3 +1,6 @@
 build/
 **/*.min.js
 node_modules/
+dist/
+**/*.config.ts
+**/*.d.ts

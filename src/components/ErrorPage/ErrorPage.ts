@@ -1,3 +1,4 @@
+import { Routes } from '../../js/Routes';
 import Block from '../../utils/block';
 import type { Props } from '../../utils/types';
 import Button from '../Button/Button';
@@ -13,7 +14,7 @@ export default class ErrorPage extends Block {
         text: 'Вернутся на главную',
         type: 'button',
         events: {
-          click: () => { window.location.href = '/'; },
+          click: () => { window.location.href = Routes.HOME; },
         },
       }),
     });

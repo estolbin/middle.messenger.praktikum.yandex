@@ -1,9 +1,13 @@
 import Button from '../../components/Button/Button';
 import FormCard from '../../components/FormCard/FormCard';
 import Input from '../../components/Input/Input';
+import { Routes } from '../../js/Routes';
 import Block from '../../utils/block';
 import {
-  containsOnlyDigitsOrOptionalPlus, createValidator, hasDigit, hasNoSpaces, hasUppercaseLetter, isLatinWithOptionalNumbers, isLengthValid, isPasswordLengthValid, isPasswordMatch, isValidCharacters, isValidEmail, isValidName, validateForm,
+  containsOnlyDigitsOrOptionalPlus, createValidator, hasDigit,
+  hasNoSpaces, hasUppercaseLetter, isLatinWithOptionalNumbers,
+  isLengthValid, isPasswordLengthValid, isPasswordMatch,
+  isValidCharacters, isValidEmail, isValidName, validateForm,
 } from '../../utils/validator';
 
 export default class RegisterPage extends Block {
@@ -163,7 +167,7 @@ export default class RegisterPage extends Block {
         }),
         link: {
           text: 'Войти',
-          href: '/login',
+          href: Routes.LOGIN,
         },
         events: {
           'register-form:submit': (event: Event) => {
@@ -171,8 +175,8 @@ export default class RegisterPage extends Block {
             if (event.target instanceof HTMLFormElement) {
               const formData = new FormData(event.target);
               const login = formData.get('login');
-              const first_name = formData.get('first_name');
-              const second_name = formData.get('second_name');
+              const firstName = formData.get('first_name');
+              const secondName = formData.get('second_name');
               const email = formData.get('email');
               const phone = formData.get('phone');
               const password = formData.get('password');
@@ -190,13 +194,14 @@ export default class RegisterPage extends Block {
               const isFormValid = validateForm(fields);
 
               if (isFormValid) {
+                // eslint-disable-next-line no-console
                 console.log(
                   'login',
                   login,
                   'first_name',
-                  first_name,
+                  firstName,
                   'second_name',
-                  second_name,
+                  secondName,
                   'email',
                   email,
                   'phone',
@@ -205,6 +210,7 @@ export default class RegisterPage extends Block {
                   password,
                 );
               } else {
+                // eslint-disable-next-line no-console
                 console.log('Form is not valid');
               }
             }

@@ -9,7 +9,7 @@
         "start": "vite --port 3000",
         "lint": "eslint . --ext .js,.ts,.vue,.hbs --fix",
         "stylelint": "stylelint \"**/*.css\"",
-        "tsc": "tsc"
+        "vite": "vite build && vite preview --port 3000"
     },
     "devDependencies": {
         "@typescript-eslint/eslint-plugin": "^8.33.1",
@@ -17,6 +17,7 @@
         "eslint": "^8.57.1",
         "eslint-config-airbnb": "^19.0.4",
         "stylelint": "^16.19.1",
+        "stylelint-config-standard-scss": "^15.0.1",
         "typescript": "~5.8.3",
         "vite": "^6.2.0",
         "vite-plugin-eslint": "^1.8.1"
@@ -29,6 +30,6 @@
         "vite-plugin-handlebars": "^2.0.0"
     },
     "engines": {
-      "node": ">=19.0.0"
+        "node": ">=19.0.0"
     }
 }

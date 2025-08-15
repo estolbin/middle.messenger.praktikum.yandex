@@ -10,6 +10,7 @@ export default class ProfileCard extends Block {
       ...props,
       className: 'form-card',
       title: props.title || 'Профиль пользователя',
+      form_name: 'profile-form',
       Avatar: new Avatar({
         src: 'https://avatar.iran.liara.run/public/boy',
         alt: 'Аватар пользователя',
@@ -29,7 +30,7 @@ export default class ProfileCard extends Block {
         <div class="form-content">
             <div class="profile">
                 {{{ Avatar }}}
-                <form id="{{form_id}}">
+                <form name="{{form_name}}">
                     {{#each items}}
                         {{{ this }}}
                     {{/each}}

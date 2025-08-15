@@ -1,9 +1,12 @@
+/* eslint-disable import/extensions */
+/* eslint-disable import/no-unresolved */
 import Input from '../components/Input/Input';
 import Block from './block';
 
 type Condition = () => boolean;
 
-export const createValidator = (e: Event, component: Block): ((condition: Condition, errorMessage: string) => boolean) => (condition: Condition, errorMessage: string): boolean => {
+export const createValidator = (e: Event, component: Block):
+    ((condition: Condition, errorMessage: string) => boolean) => (condition: Condition, errorMessage: string): boolean => {
   if (e.target instanceof HTMLInputElement) {
     const { value } = e.target;
 
@@ -75,7 +78,7 @@ export const isValidEmail = (value: string): boolean => {
 
 // name
 export const isValidName = (value: string): boolean => {
-  const nameRegex = /^[A-ZА-Я][a-zа-я-]+$/; // Заглавная буква, затем буквы или дефис
+  const nameRegex = /^[A-ZА-ЯЁ][a-zа-яё-]+$/; // Заглавная буква, затем буквы или дефис
   return nameRegex.test(value);
 };
 
@@ -128,6 +131,7 @@ export const validateForm = (fields: { [key: string]: Input }): boolean => {
         break;
 
       case 'confirm':
+        // eslint-disable-next-line no-case-declarations
         const passwordValue = fields.password?.getProps().value || '';
         if (!isPasswordMatch(passwordValue, value)) {
           validate(() => true, 'Пароли не совпадают.');
@@ -139,6 +143,10 @@ export const validateForm = (fields: { [key: string]: Input }): boolean => {
           validate(() => true, 'Некорректный email.');
           isValid = false;
         }
+      // eslint-disable-next-line no-fallthrough
+      default:
+        isValid = true;
+        break;
     }
   });
 
