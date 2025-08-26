@@ -142,7 +142,7 @@ export default class RegisterPage extends Block {
 
             const existingPassword = passwordInput.getProps().value;
 
-            validate(() => !isPasswordMatch(existingPassword, value), 'Пароли не совпадают');
+            validate(() => !isPasswordMatch(existingPassword as string, value), 'Пароли не совпадают');
           }
         },
       },

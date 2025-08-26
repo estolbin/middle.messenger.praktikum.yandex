@@ -6,10 +6,12 @@ import './ChatList.css';
 
 export default class ChatList extends Block {
   constructor(props: Props) {
+    const chats = Array.isArray(props?.chats) ? props.chats : [];
+
     super('div', ({
       ...props,
       className: 'chat-list',
-      chatItems: props?.chats.map((props: Props) => new ChatItem({
+      chatItems: chats.map((props: Props) => new ChatItem({
         id: props.id,
         avatarSrc: props.avatarSrc,
         name: props.name,
@@ -18,7 +20,7 @@ export default class ChatList extends Block {
         lastMessageTime: props.lastMessageTime,
         isActive: props.isActive,
         attrs: {
-          ...props.attrs,
+
           'data-chat-id': props.id,
         },
 

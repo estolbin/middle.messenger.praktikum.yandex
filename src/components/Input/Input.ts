@@ -22,14 +22,14 @@ export default class Input extends Block {
     if (oldProps.error !== newProps.error && this._element) {
       const errorElement = this._element.querySelector('.input-field__error');
       if (errorElement) {
-        errorElement.textContent = newProps.error || ''; // Обновляем текст ошибки
+        errorElement.textContent = String(newProps.error || ''); // Обновляем текст ошибки
       }
     }
 
     if (oldProps.value !== newProps.value && this._element) {
       const inputElement = this._element.querySelector('input');
       if (inputElement instanceof HTMLInputElement) {
-        inputElement.value = newProps.value || ''; // Обновляем значение ввода
+        inputElement.value = String(newProps.value || ''); // Обновляем значение ввода
       }
     }
 

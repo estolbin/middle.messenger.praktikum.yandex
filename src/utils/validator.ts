@@ -91,40 +91,40 @@ export const validateForm = (fields: { [key: string]: Input }): boolean => {
 
     switch (name) {
       case 'login':
-        if (!isLengthValid(value, 3, 20)) {
+        if (!isLengthValid(value as string, 3, 20)) {
           validate(() => true, 'Логин должен содержать от 3 до 20 символов, состоять из латиницы, цифр, дефиса и нижнего подчёркивания.');
           isValid = false;
         }
         break;
       case 'first_name':
-        if (!isValidName(value)) {
+        if (!isValidName(value as string)) {
           validate(() => true, 'Имя должно начинаться с заглавной буквы и содержать только буквы, дефисы или пробелы.');
           isValid = false;
         }
         break;
       case 'second_name':
-        if (!isValidName(value)) {
+        if (!isValidName(value as string)) {
           validate(() => true, 'Фамилия должна начинаться с заглавной буквы и содержать только буквы, дефисы или пробелы.');
           isValid = false;
         }
         break;
       case 'phone':
-        if (!isLengthValid(value, 10, 15)) {
+        if (!isLengthValid(value as string, 10, 15)) {
           validate(() => true, 'Номер телефона должен быть от 10 до 15 символов');
           isValid = false;
-        } else if (!containsOnlyDigitsOrOptionalPlus(value)) {
+        } else if (!containsOnlyDigitsOrOptionalPlus(value as string)) {
           validate(() => true, 'Номер телефона должен содержать только цифры и +');
           isValid = false;
         }
         break;
       case 'password':
-        if (!isPasswordLengthValid(value)) {
+        if (!isPasswordLengthValid(value as string)) {
           validate(() => true, 'Пароль должен быть от 8 до 40 символов.');
           isValid = false;
-        } else if (!hasUppercaseLetter(value)) {
+        } else if (!hasUppercaseLetter(value as string)) {
           validate(() => true, 'Пароль должен содержать хотя бы одну заглавную букву.');
           isValid = false;
-        } else if (!hasDigit(value)) {
+        } else if (!hasDigit(value as string)) {
           validate(() => true, 'Пароль должен содержать хотя бы одну цифру.');
           isValid = false;
         }
@@ -133,13 +133,13 @@ export const validateForm = (fields: { [key: string]: Input }): boolean => {
       case 'confirm':
         // eslint-disable-next-line no-case-declarations
         const passwordValue = fields.password?.getProps().value || '';
-        if (!isPasswordMatch(passwordValue, value)) {
+        if (!isPasswordMatch(passwordValue as string, value as string)) {
           validate(() => true, 'Пароли не совпадают.');
           isValid = false;
         }
         break;
       case 'email':
-        if (!isValidEmail(value)) {
+        if (!isValidEmail(value as string)) {
           validate(() => true, 'Некорректный email.');
           isValid = false;
         }

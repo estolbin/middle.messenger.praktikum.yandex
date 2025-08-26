@@ -11,7 +11,6 @@ export default class Button extends Block {
       svgIcon: props.svgIcon || '',
       events: props.events || {},
       attrs: {
-        ...props.attrs,
         type: props.type || 'submit',
       },
     });
