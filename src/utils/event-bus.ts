@@ -1,13 +1,11 @@
-type CallbackFunction = (...args: any[]) => void;
-
 export default class EventBus {
-  private listeners: Record<string, CallbackFunction[]>;
+  private listeners: Record<string, Function[]>;
 
   constructor() {
     this.listeners = {};
   }
 
-  on(event: string, callback: CallbackFunction): void {
+  on(event: string, callback: Function): void {
     if (!this.listeners[event]) {
       this.listeners[event] = [];
     }
@@ -15,7 +13,7 @@ export default class EventBus {
     this.listeners[event].push(callback);
   }
 
-  off(event: string, callback: CallbackFunction): void {
+  off(event: string, callback: Function): void {
     if (!this.listeners[event]) {
       throw new Error(`Нет события: ${event}`);
     }
@@ -25,7 +23,7 @@ export default class EventBus {
     );
   }
 
-  emit(event: string, ...args: any[]): void {
+  emit(event: string, ...args: unknown[]): void {
     if (!this.listeners[event]) {
       throw new Error(`Нет события: ${event}`);
     }

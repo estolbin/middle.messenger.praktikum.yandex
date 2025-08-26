@@ -8,17 +8,24 @@ enum METHOD {
 
 type Options = {
     method: METHOD;
-    data?: any;
+    data?: Record<string, unknown> | string;
 };
 
-// Тип Omit принимает два аргумента: первый — тип, второй — строка
-// и удаляет из первого типа ключ, переданный вторым аргументом
 type OptionsWithoutMethod = Omit<Options, 'method'>;
-// Этот тип эквивалентен следующему:
-// type OptionsWithoutMethod = { data?: any };
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 class HTTPTransport {
+  private queryStringify(data: Record<string, unknown>): string {
+    const params = Object.entries(data)
+      .map(([key, value]) => {
+        if (value === null || value === undefined) return '';
+        return `${encodeURIComponent(key)}=${encodeURIComponent(String(value))}`;
+      })
+      .filter(Boolean);
+
+    return params.length > 0 ? `?${params.join('&')}` : '';
+  }
+
   get(url: string, options: OptionsWithoutMethod = {}): Promise<XMLHttpRequest> {
     return this.request(url, { ...options, method: METHOD.GET });
   }
@@ -44,7 +51,12 @@ class HTTPTransport {
 
     return new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest();
-      xhr.open(method, url);
+
+      const urlWithQuery = method === METHOD.GET && data && typeof data !== 'string'
+        ? `${url}${this.queryStringify(data as Record<string, unknown>)}`
+        : url;
+
+      xhr.open(method, urlWithQuery);
 
       // eslint-disable-next-line func-names
       xhr.onload = function () {
@@ -58,7 +70,8 @@ class HTTPTransport {
       if (method === METHOD.GET || !data) {
         xhr.send();
       } else {
-        xhr.send(data);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.send(typeof data === 'string' ? data : JSON.stringify(data));
       }
     });
   }

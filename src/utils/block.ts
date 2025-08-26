@@ -259,22 +259,22 @@ export default class Block {
     return this._element;
   }
 
-  private _makePropsProxy(props: Props): Props {
+  private _makePropsProxy(props: Record<string, unknown>): Record<string, unknown> {
     const eventBus = this.eventBus();
     const emitBind = eventBus.emit.bind(eventBus);
 
-    return new Proxy(props as any, {
-      get(target: Props, prop: string) {
+    return new Proxy(props, {
+      get(target: Record<string, unknown>, prop: string): unknown {
         const value = target[prop];
-        return typeof value === 'function' ? value.bind(target) : value;
+        return typeof value === 'function' ? (value as Function).bind(target) : value;
       },
-      set(target: Props, prop: string, value: any) {
+      set(target: Record<string, unknown>, prop: string, value: unknown): boolean {
         const oldTarget = { ...target };
         target[prop] = value;
         emitBind(Block.EVENTS.FLOW_CDU, oldTarget, target);
         return true;
       },
-      deleteProperty() {
+      deleteProperty(): boolean {
         throw new Error('Нет доступа');
       },
     });
@@ -283,9 +283,6 @@ export default class Block {
   private _createDocumentElement(tagName: string): HTMLElement {
     const element = document.createElement(tagName);
 
-    if (this.props.settings?.withInternalID) {
-      element.setAttribute('data-id', this._id);
-    }
     return element;
   }
 

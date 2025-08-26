@@ -1,5 +1,6 @@
-export type Props = {
-    [key: string]: any;
+export type Props<T = Record<string, unknown>> = {
+    [key: string]: T[keyof T];
+} & {
     events?: {
         [key: string]: (event: Event) => void;
     };

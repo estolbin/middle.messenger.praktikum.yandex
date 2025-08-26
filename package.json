@@ -6,10 +6,9 @@
         "dev": "vite --port 3000",
         "build": "tsc && vite build",
         "preview": "vite preview",
-        "start": "vite --port 3000",
+        "start": "vite build && vite preview --port 3000",
         "lint": "eslint . --ext .js,.ts,.vue,.hbs --fix",
-        "stylelint": "stylelint \"**/*.css\"",
-        "vite": "vite build && vite preview --port 3000"
+        "stylelint": "stylelint \"**/*.css\""
     },
     "devDependencies": {
         "@typescript-eslint/eslint-plugin": "^8.33.1",
