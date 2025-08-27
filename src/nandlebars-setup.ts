@@ -30,5 +30,4 @@ export function registerPartials() {
   Object.entries(partials).forEach(([name, template]) => {
     Handlebars.registerPartial(name, Handlebars.compile(template));
   });
-
 }

@@ -13,7 +13,7 @@
 }
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: Inter, sans-serif;
   font-size: 13px;
   line-height: 1.2;
   color: var(--text-primary);
@@ -75,12 +75,12 @@ body {
 }
 
 .button-danger {
-  background-color: #ff3333;
+  background-color: #f33;
   color: white;
 }
 
 .button-danger:hover {
-  background-color: #cc0000;
+  background-color: #c00;
 }
 
 .chat-page {
@@ -114,6 +114,11 @@ body {
   border: none;
   padding: 10px;
   outline: none;
+}
+
+.chat-message__input {
+    flex-grow: 1;
+    display: flex;
 }
 
 .chat-page {
